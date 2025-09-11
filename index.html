@@ -1978,14 +1978,39 @@
     });
 
     // Contact form submission
-    $('#contactForm').submit(function(e) {
-      e.preventDefault();
-      if (this.checkValidity()) {
-        // Simulate form submission success
-        alert('Obrigado! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve.');
-        this.reset();
-        this.classList.remove('was-validated');
-      }
+     $('#contactForm').submit(function(e) {
+        e.preventDefault();
+        
+        if (this.checkValidity()) {
+            // Get form values
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            var business = $('#business').val();
+            var message = $('#message').val();
+            
+            // Create WhatsApp message
+            var whatsappMessage = "Olá! Gostaria de solicitar uma proposta para Landing Page.%0A%0A";
+            whatsappMessage += "*Nome:* " + name + "%0A";
+            whatsappMessage += "*E-mail:* " + email + "%0A";
+            whatsappMessage += "*Telefone/WhatsApp:* " + phone + "%0A";
+            whatsappMessage += "*Tipo de Negócio:* " + business + "%0A";
+            whatsappMessage += "*Mensagem:* " + message + "%0A%0A";
+            whatsappMessage += "Por favor, entre em contato comigo!";
+            
+            // Open WhatsApp
+            window.open('https://wa.me/258834304861?text=' + whatsappMessage, '_blank');
+            
+            // Optional: Reset form after submission
+            this.reset();
+            this.classList.remove('was-validated');
+            
+            // Optional: Show success message
+            alert('Obrigado! Redirecionando para o WhatsApp para finalizar sua solicitação.');
+        } else {
+            // If form is not valid, show validation messages
+            this.classList.add('was-validated');
+        }
     });
   </script>
 </body>
