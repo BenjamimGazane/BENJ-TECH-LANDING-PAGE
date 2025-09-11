@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Converta Tráfego Pago em Clientes | Landing Pages de Alta Conversão</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --secondary: #FFD700;
+      --secondary-dark: #FFA500;
+      --dark: #1F2937;
+      --light: #F9FAFB;
+      --gray: #6B7280;
+      --success: #10B981;
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      --premium-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+    
+    /* Navbar - Reduzida */
+    .navbar {
+        padding: 0.5rem 1rem;
+        background: rgba(79, 70, 229, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+    
+    .navbar.scrolled {
+        background: var(--gradient);
+        padding: 0.4rem 1rem;
+        box-shadow: var(--premium-shadow);
+    }
+    
+    .navbar-brand {
+        font-weight: 800;
+        color: white;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .nav-link {
+        font-weight: 500;
+        margin: 0 0.5rem;
+        color: white !important;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 0.95rem;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--secondary);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    
+    .nav-link:hover {
+        color: var(--secondary) !important;
+    }
+    
+    /* Ajuste do botão na navbar */
+    .navbar .btn-primary {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+    }
+    
+    /* Ajuste do ícone do menu hamburguer */
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        font-size: 1rem;
+    }
+    
+    
+    
+    /* Ajustes para mobile */
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 0.4rem 1rem;
+        }
+        
+        .navbar-brand {
+            font-size: 1.2rem;
+        }
+        
+        .navbar .btn-primary {
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+        }
+      }
+
+    
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 12rem 0 8rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient);
+      opacity: 0.7;
+      z-index: -1;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: rotate(-15deg);
+      animation: rotate 30s linear infinite;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-badge {
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+    }
+    
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      max-width: 700px;
+      font-weight: 300;
+    }
+    
+    .cta-btn {
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 1.2rem 2.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255, 183, 0, 0.5);
+      display: inline-flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 183, 0, 0.7);
+      background: var(--secondary-dark);
+    }
+    
+    .cta-btn i {
+      margin-left: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .cta-btn:hover i {
+      transform: translateX(8px);
+    }
+    
+    .stats-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--premium-shadow);
+      margin-top: 3rem;
+      backdrop-filter: blur(5px);
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      position: relative;
+    }
+    
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    
+    /* Floating Particles */
+    .floating-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: float 10s infinite ease-in-out;
+    }
+    
+    .particle:nth-child(1) { width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 12s; }
+    .particle:nth-child(2) { width: 15px; height: 15px; top: 60%; left: 80%; animation-duration: 15s; }
+    .particle:nth-child(3) { width: 25px; height: 25px; top: 40%; left: 30%; animation-duration: 10s; }
+    .particle:nth-child(4) { width: 18px; height: 18px; top: 80%; left: 60%; animation-duration: 13s; }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(-15deg); }
+      100% { transform: rotate(345deg); }
+    }
+    
+    /* Portfolio Styles */
+    .portfolio {
+      background: linear-gradient(to bottom, white 0%, #F3F4F6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .portfolio::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(79,70,229,0.05)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,149.3C384,171,480,245,576,256C672,267,768,213,864,186.7C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: -1;
+    }
+    
+    .portfolio-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--premium-shadow);
+      transition: all 0.4s ease;
+      height: 100%;
+    }
+    
+    .portfolio-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .portfolio-image {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+    
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    
+    .portfolio-card:hover .portfolio-image img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(79, 70, 229, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .portfolio-card:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    
+    .portfolio-link {
+      color: white;
+      font-size: 1.8rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .portfolio-link:hover {
+      transform: scale(1.2);
+      background: var(--secondary-dark);
+    }
+    
+    .portfolio-content {
+      padding: 2rem;
+    }
+    
+    .portfolio-content h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .portfolio-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    
+    .portfolio-stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat-badge {
+      background: rgba(79, 70, 229, 0.15);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    
+    .portfolio-cta {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    
+    .portfolio-cta i {
+      margin-left: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .portfolio-cta:hover {
+      color: var(--primary-dark);
+    }
+    
+    .portfolio-cta:hover i {
+      transform: translateX(8px);
+    }
+    
+    /* Sections Common */
+    .section-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      position: relative;
+      text-align: center;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 4rem;
+      max-width: 800px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    section {
+      padding: 8rem 0;
+      position: relative;
+    }
+    
+    /* Benefits Section */
+    .benefits {
+      background: linear-gradient(to bottom, white 0%, #F3F4F6 100%);
+    }
+    
+    .benefit-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: var(--premium-shadow);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 0;
+      background: var(--gradient);
+      transition: height 0.5s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .benefit-card:hover::before {
+      height: 100%;
+    }
+    
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(79, 70, 229, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .benefit-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .benefit-card p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+    
+    /* How It Works */
+    .how-it-works {
+      background: white;
+      position: relative;
+    }
+    
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(79,70,229,0.03)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: -1;
+    }
+    
+    .process-steps {
+      position: relative;
+    }
+    
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: 35px;
+      height: 85%;
+      width: 4px;
+      background: var(--gradient);
+      opacity: 0.3;
+    }
+    
+    .step {
+      display: flex;
+      margin-bottom: 4rem;
+      position: relative;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+    }
+    
+    .step:hover {
+      transform: translateX(10px);
+    }
+    
+    .step-number {
+      min-width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin-right: 2rem;
+      z-index: 2;
+      flex-shrink: 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .step-content h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      color: var(--dark);
+    }
+    
+    .step-content p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+    
+    /* Pricing Section */
+    .pricing {
+      background: linear-gradient(to bottom, #F3F4F6 0%, white 100%);
+      position: relative;
+    }
+    
+    .pricing::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(79,70,229,0.05)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,149.3C384,171,480,245,576,256C672,267,768,213,864,186.7C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: -1;
+    }
+    
+    .pricing-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--premium-shadow);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      height: 100%;
+      position: relative;
+    }
+    
+    .pricing-card.popular {
+      transform: scale(1.05);
+      border: 3px solid var(--primary);
+      box-shadow: 0 20px 50px rgba(79, 70, 229, 0.2);
+      z-index: 2;
+    }
+    
+    .pricing-card.popular::before {
+      content: 'MAIS POPULAR';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .pricing-card.popular:hover {
+      transform: scale(1.05) translateY(-15px);
+    }
+    
+    .pricing-header {
+      padding: 3rem 2.5rem;
+      text-align: center;
+      background: var(--gradient);
+      color: white;
+      position: relative;
+    }
+    
+    .pricing-name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    
+    .price-container {
+      position: relative;
+      display: inline-block;
+      margin: 1.5rem 0;
+    }
+    
+    .original-price {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      right: 0;
+      text-decoration: line-through;
+      font-size: 1.3rem;
+      opacity: 0.7;
+    }
+    
+    .price {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .promo-badge {
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-left: 0.75rem;
+      vertical-align: super;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .price-period {
+      font-size: 1rem;
+      opacity: 0.8;
+      display: block;
+      margin-top: 0.75rem;
+    }
+    
+    .pricing-features {
+      padding: 2.5rem;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+    
+    .feature-item i {
+      color: var(--success);
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .pricing-cta {
+      padding: 0 2.5rem 2.5rem;
+    }
+    
+    .price-btn {
+      display: block;
+      width: 100%;
+      padding: 1.2rem;
+      text-align: center;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.5);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      background: var(--gradient);
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background: white;
+      position: relative;
+    }
+    
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(79,70,229,0.03)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,149.3C384,171,480,245,576,256C672,267,768,213,864,186.7C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: -1;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: var(--premium-shadow);
+      position: relative;
+      margin-top: 3rem;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      font-size: 6rem;
+      color: rgba(79, 70, 229, 0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    .testimonial-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .testimonial-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--dark);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1.5rem;
+      border: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .testimonial-card:hover .author-avatar {
+      transform: scale(1.1);
+    }
+    
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .author-details h4 {
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .author-details p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+    
+    /* FAQ Section */
+    .faq {
+      background: linear-gradient(to bottom, white 0%, #F3F4F6 100%);
+      position: relative;
+    }
+    
+    .faq::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(79,70,229,0.03)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: -1;
+    }
+    
+    .accordion-item {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--premium-shadow);
+      transition: all 0.3s ease;
+    }
+    
+    .accordion-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .accordion-button {
+      padding: 1.8rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--dark);
+      background: white;
+      transition: all 0.3s ease;
+    }
+    
+    .accordion-button:not(.collapsed) {
+      background: var(--gradient);
+      color: white;
+    }
+    
+    .accordion-button:focus {
+      box-shadow: none;
+      border: none;
+    }
+    
+    .accordion-body {
+      padding: 1.8rem;
+      color: var(--gray);
+      font-size: 1rem;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: var(--gradient);
+      color: white;
+      padding: 8rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,149.3C384,171,480,245,576,256C672,267,768,213,864,186.7C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: 0;
+    }
+    
+    .cta-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .cta-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    .btn-light {
+      background: white;
+      color: var(--primary);
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .btn-light:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Contact Form */
+    .contact {
+      background: white;
+      position: relative;
+    }
+    
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(79,70,229,0.03)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom;
+      z-index: -1;
+    }
+    
+    .form-control {
+      padding: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      background: #F9FAFB;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-control:focus {
+      background: white;
+      box-shadow: 0 0 0 0.3rem rgba(79, 70, 229, 0.3);
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    
+    .invalid-feedback {
+      font-size: 0.9rem;
+      color: #EF4444;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 6rem 0 3rem;
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,149.3C384,171,480,245,576,256C672,267,768,213,864,186.7C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"%3E%3C/path%3E%3C/svg%3E') no-repeat top;
+      z-index: 0;
+      animation: wave 20s linear infinite;
+    }
+    
+    .footer-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 8px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 4rem;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 183, 0, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 183, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 183, 0, 0); }
+    }
+    
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-25%); }
+      100% { transform: translateX(0); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .pricing-card.popular {
+        transform: scale(1);
+        margin: 2rem 0;
+      }
+      
+      .pricing-card.popular:hover {
+        transform: translateY(-15px);
+      }
+      
+      .step-number {
+        min-width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+        margin-right: 1.5rem;
+      }
+      
+      .step-content h3 {
+        font-size: 1.4rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+      
+      .hero {
+        padding: 10rem 0 6rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .stats-container {
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .stat-item {
+        padding: 1rem 0.5rem;
+      }
+      
+      .stat-number {
+        font-size: 1.8rem;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
+      }
+      
+      .step {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .step-number {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+        align-self: center;
+      }
+      
+      .process-steps::before {
+        display: none;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .price {
+        font-size: 2.8rem;
+      }
+      
+      .original-price {
+        font-size: 1.1rem;
+        top: -20px;
+      }
+      
+      .pricing-header {
+        padding: 2rem 1.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-badge {
+        font-size: 0.9rem;
+      }
+      
+      .stats-container {
+        margin-top: 2rem;
+      }
+      
+      .stat-number {
+        font-size: 1.5rem;
+      }
+      
+      .benefit-card {
+        padding: 2rem;
+      }
+      
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+      
+      .portfolio-image {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">ConvertPage<span style="color: var(--secondary)">MZ</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#beneficios">Benefícios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#como-funciona">Como Funciona</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#precos">Preços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#resultados">Resultados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="btn btn-primary" href="#contato">Solicitar Agora</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content" data-aos="fade-right">
+          <span class="hero-badge">Para Negócios que Buscam Resultados</span>
+          <h1 class="hero-title">Transforme Cliques em Clientes com Landing Pages Premium</h1>
+          <p class="hero-subtitle">Páginas estrategicamente projetadas para maximizar o ROI do seu tráfego pago, reduzir custos de aquisição e elevar suas conversões a novos patamares.</p>
+          <a href="#contato" class="cta-btn">Impulsione Suas Conversões <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="stats-container fade-in">
+            <div class="row text-center">
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number">+127%</div>
+                  <div class="stat-label">Conversão Média</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number">-63%</div>
+                  <div class="stat-label">Custo por Lead</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number">24h</div>
+                  <div class="stat-label">Entrega Média</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Nossos Projetos Premium</h2>
+        <p class="section-subtitle">Explore exemplos de landing pages que entregamos, projetadas para resultados excepcionais</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-image">
+              <img src="Screenshot 2025-09-10 155228.png" alt="TechSolutions MZ - Landing Page" class="img-fluid">
+              <div class="portfolio-overlay">
+                <a href="https://hotel-paraiso.onrender.com" target="_blank" class="portfolio-link">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <h3>Hotel Paraiso MZ</h3>
+              <p>Landing page premium ficticia para serviços de Hotelaria design otimizado.</p>
+              <div class="portfolio-stats">
+                <span class="stat-badge">+143% conversões</span>
+                <span class="stat-badge">-52% custo/lead</span>
+              </div>
+              <a href="https://hotel-paraiso.onrender.com" target="_blank" class="portfolio-cta">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-image">
+              <img src="Screenshot 2025-09-11 160924.png" alt="ModaMoçambique - E-commerce" class="img-fluid">
+              <div class="portfolio-overlay">
+                <a href="https://excel-mastery2.onrender.com" target="_blank" class="portfolio-link">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <h3>Excel mastery</h3>
+              <p>Landing page desenvolvida para campanhas de venda de curso de Excel.  
+                Inclui espaço estratégico para vídeo de apresentação, destaque para benefícios do curso  
+                e chamada direta para ação (inscrição ou WhatsApp), focada em conversão de leads</p>
+              <div class="portfolio-stats">
+                <span class="stat-badge">+98% conversões</span>
+                <span class="stat-badge">-47% taxa de rejeição</span>
+              </div>
+              <a href="https://excel-mastery2.onrender.com" target="_blank" class="portfolio-cta">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-image">
+              <img src="Screenshot 2025-09-11 160328.png" alt="ImoVillas - Imobiliária" class="img-fluid">
+              <div class="portfolio-overlay">
+                <a href="http://zavalesmartclean.vercel.app/" target="_blank" class="portfolio-link">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <h3>Zavale Smart Clean</h3>
+              <p>Landing page para empresa de produtos de limpeza sanitária,  
+                 com catálogo visual, destaque dos benefícios e botão direto para WhatsApp,  
+                 focada em transmitir confiança e gerar pedidos rápidos.</p>
+              <div class="portfolio-stats">
+                <span class="stat-badge">+127% leads</span>
+                <span class="stat-badge">-61% custo/aquisição</span>
+              </div>
+              <a href="http://zavalesmartclean.vercel.app/" target="_blank" class="portfolio-cta">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="#contato" class="cta-btn">Quero Meu Projeto Premium <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits" id="beneficios">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Por que Escolher Nossas Landing Pages?</h2>
+        <p class="section-subtitle">Nossas landing pages são ferramentas estratégicas projetadas para transformar visitantes em clientes com eficiência máxima.</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="benefit-card fade-in">
+            <div class="benefit-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Conversões Excepcionais</h3>
+            <p>Estratégias comprovadas para transformar mais visitantes em clientes, maximizando seu ROI.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="benefit-card fade-in">
+            <div class="benefit-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3>Redução de Custos</h3>
+            <p>Converta mais com menos. Diminua o custo por aquisição e otimize seu orçamento de anúncios.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="benefit-card fade-in">
+            <div class="benefit-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3>Velocidade Premium</h3>
+            <p>Páginas otimizadas para carregamento ultrarrápido, reduzindo rejeições e melhorando a experiência.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="benefit-card fade-in">
+            <div class="benefit-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Design Responsivo</h3>
+            <p>Experiência impecável em todos os dispositivos, capturando leads onde quer que estejam.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="benefit-card fade-in">
+            <div class="benefit-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Suporte Premium</h3>
+            <p>Suporte contínuo com ajustes e otimizações para garantir resultados consistentes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="como-funciona">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Nosso Processo Premium</h2>
+        <p class="section-subtitle">Um fluxo eficiente e estratégico para entregar sua landing page com resultados excepcionais.</p>
+      </div>
+      
+      <div class="process-steps">
+        <div class="step fade-in" data-aos="fade-right" data-aos-delay="100">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Briefing Estratégico</h3>
+            <p>Analisamos seu negócio, público-alvo e metas para criar uma estratégia personalizada.</p>
+          </div>
+        </div>
+        
+        <div class="step fade-in" data-aos="fade-right" data-aos-delay="200">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Desenvolvimento Premium</h3>
+            <p>Criamos design, textos e estrutura otimizados para conversão e impacto visual.</p>
+          </div>
+        </div>
+        
+        <div class="step fade-in" data-aos="fade-right" data-aos-delay="300">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Revisão Colaborativa</h3>
+            <p>Apresentamos a página para seu feedback e fazemos ajustes para perfeição.</p>
+          </div>
+        </div>
+        
+        <div class="step fade-in" data-aos="fade-right" data-aos-delay="400">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Entrega e Integração</h3>
+            <p>Entregamos a página pronta, integrada com suas ferramentas de marketing e analytics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="precos">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Escolha Seu Plano Premium</h2>
+        <p class="section-subtitle">Planos desenhados para atender suas necessidades com resultados garantidos.</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card fade-in">
+            <div class="pricing-header">
+              <h3 class="pricing-name">Landing Básica</h3>
+              <div class="price-container">
+                <div class="original-price">5.000 MT</div>
+                <div class="price">2.500<small>MT</small></div>
+                <span class="promo-badge">-50%</span>
+              </div>
+              <div class="price-period">Pagamento Único</div>
+            </div>
+            <div class="pricing-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>1 Página de Destino</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Design Responsivo</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Formulário de Contato</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Otimização Básica SEO</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Entrega em 3 Dias</span>
+              </div>
+            </div>
+            <div class="pricing-cta">
+              <a href="#contato" class="price-btn btn-outline">Solicitar Agora</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card popular fade-in">
+            <div class="pricing-header">
+              <h3 class="pricing-name">Conversão Profissional</h3>
+              <div class="price-container">
+                <div class="original-price">8.000 MT</div>
+                <div class="price">5.000<small>MT</small></div>
+                <span class="promo-badge">-38%</span>
+              </div>
+              <div class="price-period">Pagamento Único</div>
+            </div>
+            <div class="pricing-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Tudo do Plano Básico</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Textos Persuasivos</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Testes A/B Básicos</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Suporte por 15 Dias</span>
+              </div>
+            </div>
+            <div class="pricing-cta">
+              <a href="#contato" class="price-btn btn-primary">Solicitar Agora</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="pricing-card fade-in">
+            <div class="pricing-header">
+              <h3 class="pricing-name">Enterprise</h3>
+              <div class="price-container">
+                <div class="original-price">12.500 MT</div>
+                <div class="price">8.500<small>MT</small></div>
+                <span class="promo-badge">-32%</span>
+              </div>
+              <div class="price-period">Pagamento Único</div>
+            </div>
+            <div class="pricing-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Tudo do Plano Profissional</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Página Personalizada</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Integração com Email</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Animações Avançadas</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Otimização de Velocidade</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Suporte Prioritário 30 Dias</span>
+              </div>
+            </div>
+            <div class="pricing-cta">
+              <a href="#contato" class="price-btn btn-outline">Solicitar Agora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <p class="text-muted"><small>Promoção válida por tempo limitado. Preços normais: 5.000MT, 8.000MT e 12.500MT</small></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="resultados">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Resultados que Inspiram</h2>
+        <p class="section-subtitle">Depoimentos de negócios moçambicanos que transformaram suas conversões com nossas landing pages.</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"Nossa taxa de conversão disparou 143% após a implementação da landing page. O custo por lead caiu significativamente, tornando nosso marketing muito mais eficiente!"</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Carlos Santos">
+                </div>
+                <div class="author-details">
+                  <h4>Carlos Santos</h4>
+                  <p>Diretor de Marketing, TechSolutions MZ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"Investir em uma landing page profissional foi um divisor de águas. Agora vejo o retorno claro dos meus anúncios e converto muito mais com menos esforço."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Ana Muchanga">
+                </div>
+                <div class="author-details">
+                  <h4>Ana Muchanga</h4>
+                  <p>CEO, ModaMoçambique</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p class="section-subtitle">Respostas claras para suas dúvidas sobre nossas landing pages premium.</p>
+      </div>
+      
+      <div class="accordion" id="accordionFAQ">
+        <div class="accordion-item fade-in" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Quanto tempo leva para desenvolver uma landing page?
+            </button>
+          </h3>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              O prazo médio é de 3 a 5 dias úteis, dependendo da complexidade. Oferecemos entregas expressas (24-48h) para projetos urgentes.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item fade-in" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Preciso ter hospedagem própria?
+            </button>
+          </h3>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Não é necessário. Oferecemos hospedagem otimizada de alta performance por uma taxa adicional. Também podemos publicar em seu servidor existente.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item fade-in" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Vocês oferecem manutenção após a entrega?
+            </button>
+          </h3>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Sim, oferecemos pacotes de manutenção mensal com atualizações, otimizações e suporte técnico. Cada plano inclui suporte gratuito inicial.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item fade-in" data-aos="fade-up" data-aos-delay="400">
+          <h3 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Como funciona o processo de revisão?
+            </button>
+          </h3>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">
+              Após o desenvolvimento, enviamos um link de preview. Você tem até 2 rodadas de revisões para ajustes e personalizações.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contato">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="text-center mb-5">
+            <h2 class="section-title">Pronto para Elevar Suas Conversões?</h2>
+            <p class="section-subtitle">Solicite uma proposta ou agende uma consultoria gratuita para sua landing page premium.</p>
+          </div>
+          
+          <form id="contactForm" class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="invalid-feedback">
+                  Por favor, informe seu nome.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="invalid-feedback">
+                  Por favor, informe um e-mail válido.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="phone" class="form-label">Telefone/WhatsApp</label>
+                <input type="tel" class="form-control" id="phone" required>
+                <div class="invalid-feedback">
+                  Por favor, informe seu telefone.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="business" class="form-label">Tipo de Negócio</label>
+                <input type="text" class="form-control" id="business" required>
+                <div class="invalid-feedback">
+                  Por favor, informe seu tipo de negócio.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Mensagem</label>
+              <textarea class="form-control" id="message" rows="5" required></textarea>
+              <div class="invalid-feedback">
+                Por favor, escreva sua mensagem.
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="cta-btn">Solicitar Proposta <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <h2 class="cta-title">Não Perca Mais Cliques!</h2>
+        <p class="cta-subtitle">Deixe-nos criar uma landing page que transforme seu tráfego pago em resultados reais. Solicite agora e comece a ver o impacto em até 24 horas!</p>
+        <div class="cta-buttons">
+                    <a href="#contato" class="btn btn-light">Solicitar Agora</a>
+          <a href="#portfolio" class="btn btn-light">Ver Portfólio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h3 class="footer-title">ConvertPage<span style="color: var(--secondary)">MZ</span></h3>
+          <p>Transformando tráfego pago em clientes com landing pages premium e estratégias de conversão otimizadas.</p>
+          <div class="social-links mt-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h4 class="footer-title">Links Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#precos">Preços</a></li>
+            <li><a href="#resultados">Resultados</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+          <h4 class="footer-title">Nossos Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="#">Landing Pages</a></li>
+            <li><a href="#">Otimização de Conversão</a></li>
+            <li><a href="#">Design UX/UI</a></li>
+            <li><a href="#">Consultoria em Marketing</a></li>
+            <li><a href="#">Gestão de Tráfego Pago</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h4 class="footer-title">Contato</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+258842345678"><i class="fas fa-phone me-2"></i> +258 84 234 5678</a></li>
+            <li><a href="mailto:info@convertpagemz.com"><i class="fas fa-envelope me-2"></i> info@convertpagemz.com</a></li>
+            <li><a href="https://wa.me/258842345678"><i class="fab fa-whatsapp me-2"></i> WhatsApp</a></li>
+            <li><i class="fas fa-map-marker-alt me-2"></i> Maputo, Moçambique</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 ConvertPageMZ. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap & jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Navbar scroll effect
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > 50) {
+        $('.navbar').addClass('scrolled');
+      } else {
+        $('.navbar').removeClass('scrolled');
+      }
+    });
+
+    // Form validation
+    (function () {
+      'use strict'
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+
+    // Fade-in animation on scroll
+    function checkFade() {
+      $('.fade-in').each(function() {
+        var position = $(this).offset().top;
+        var scroll = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        
+        if (scroll + windowHeight - 100 > position) {
+          $(this).addClass('visible');
+        }
+      });
+    }
+    
+    $(window).scroll(function() {
+      checkFade();
+    });
+    
+    // Initial check on page load
+    checkFade();
+
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function(e) {
+      e.preventDefault();
+      var target = this.hash;
+      var $target = $(target);
+      $('html, body').animate({
+        'scrollTop': $target.offset().top - 80
+      }, 800, 'swing');
+    });
+
+    // Contact form submission
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+      if (this.checkValidity()) {
+        // Simulate form submission success
+        alert('Obrigado! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve.');
+        this.reset();
+        this.classList.remove('was-validated');
+      }
+    });
+  </script>
+</body>
+</html>
