@@ -758,6 +758,153 @@
       color: white;
       box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
     }
+
+     /* Estilos do Botão do WhatsApp */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+  }
+  
+  .whatsapp-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .whatsapp-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+  }
+  
+  .whatsapp-link i {
+    font-size: 32px;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .pulse-ring {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #25D366;
+    border-radius: 50%;
+    animation: pulse 2s linear infinite;
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .pulse-ring.delay {
+    animation-delay: 1s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Tooltip no hover */
+  .whatsapp-link::after {
+    content: "Fale conosco pelo WhatsApp";
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--dark);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .whatsapp-link::before {
+    content: '';
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--dark);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .whatsapp-link:hover::after,
+  .whatsapp-link:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      bottom: 25px;
+      right: 25px;
+    }
+    
+    .whatsapp-link {
+      width: 65px;
+      height: 65px;
+    }
+    
+    .whatsapp-link i {
+      font-size: 28px;
+    }
+    
+    .pulse-ring {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .whatsapp-link::after {
+      display: none;
+    }
+    
+    .whatsapp-link::before {
+      display: none;
+    }
+  }
     
     .btn-primary:hover {
       background: linear-gradient(to right, var(--primary-dark), var(--primary));
@@ -1306,7 +1453,14 @@
       </div>
     </div>
   </nav>
-
+  <!-- Botão Flutuante do WhatsApp -->
+<div class="whatsapp-float mb-5">
+  <a href="#" class="whatsapp-link" id="whatsappButton">
+    <i class="fab fa-whatsapp"></i>
+    <span class="pulse-ring"></span>
+    <span class="pulse-ring delay"></span>
+  </a>
+</div>
   <!-- Hero Section -->
   <section class="hero">
     <div class="floating-particles">
@@ -1897,7 +2051,7 @@
           <h4 class="footer-title">Contato</h4>
           <ul class="footer-links">
             <li><a href="tel:+258842345678"><i class="fas fa-phone me-2"></i> +258 846828130</a></li>
-            <li><a href="https://wa.me/258846828130"><i class="fab fa-whatsapp me-2"></i> WhatsApp</a></li>
+            <li><a href="https://wa.me/258834304861"><i class="fab fa-whatsapp me-2"></i> WhatsApp</a></li>
             <li><i class="fas fa-map-marker-alt me-2"></i> Maputo, Moçambique</li>
           </ul>
         </div>
@@ -1915,6 +2069,26 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <script>
+    // Script para mensagem pré-definida do WhatsApp
+  document.addEventListener('DOMContentLoaded', function() {
+    const whatsappButton = document.getElementById('whatsappButton');
+    
+    whatsappButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Mensagem pré-definida
+      const message = "Olá! Gostaria de mais informações sobre as Landing Pages Premium da ConvertPageMZ.";
+    
+      const phoneNumber = "258834304861";
+      
+      // Codificar a mensagem para URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      
+      window.open(whatsappURL, '_blank');
+    });
+  });
     // Initialize AOS
     AOS.init({
       duration: 1000,
