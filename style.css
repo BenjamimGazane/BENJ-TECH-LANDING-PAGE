@@ -10,7 +10,9 @@
       --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       --premium-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
-    
+    html {
+  scroll-behavior: smooth;
+}
     * {
       margin: 0;
       padding: 0;
@@ -92,9 +94,7 @@
         padding: 0.25rem 0.5rem;
         font-size: 1rem;
     }
-    
-    
-    
+
     /* Ajustes para mobile */
     @media (max-width: 768px) {
         .navbar {
@@ -117,7 +117,7 @@
       background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
       background-size: cover;
       color: white;
-      padding: 12rem 0 8rem;
+      padding: 12rem 0 1rem;
       position: relative;
       overflow: hidden;
       z-index: 1;
